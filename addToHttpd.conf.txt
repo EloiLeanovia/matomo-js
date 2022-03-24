@@ -1,0 +1,16 @@
+LoadModule ext_filter_module modules/mod_ext_filter
+LoadModule substitute_module modules/mod_substitute
+
+<Location / >
+ AddOutputFilterByType SUBSTITUTE text/html
+ #Scripts utilisés pour le tracking avancé 
+ Substitute "s|</body>|<script type=\"text/javascript\" src=\"http://192.168.1.81/jpetstore/css/matomo_pagename_data.js\"></script></body>|ni"
+ Substitute "s|</body>|<script type=\"text/javascript\" src=\"http://192.168.1.81/jpetstore/css/matomo_pagename_functions.js\"></script></body>|ni"
+ Substitute "s|</body>|<script type=\"text/javascript\" src=\"http://192.168.1.81/jpetstore/css/matomo_interaction_data.js\"></script></body>|ni"
+ Substitute "s|</body>|<script type=\"text/javascript\" src=\"http://192.168.1.81/jpetstore/css/matomo_interaction_functions.js\"></script></body>|ni"
+ Substitute "s|</body>|<script type=\"text/javascript\" src=\"http://192.168.1.81/jpetstore/css/matomo_xhr_data.js\"></script></body>|ni"
+ Substitute "s|</body>|<script type=\"text/javascript\" src=\"http://192.168.1.81/jpetstore/css/matomo_xhr_functions.js\"></script></body>|ni"
+ Substitute "s|</body>|<script type=\"text/javascript\" src=\"http://192.168.1.81/jpetstore/css/matomo_parsing.js\"></script></body>|ni"
+ #Script de base Matomo
+ Substitute "s|</body>|<script type=\"text/javascript\" src=\"http://192.168.1.81/jpetstore/css/matomo_script.js\"></script></body>|ni"
+</Location>
